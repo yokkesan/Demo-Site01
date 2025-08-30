@@ -1,0 +1,145 @@
+/* ===== header レイアウト ===== */
+.site-header {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* ← 両端揃え */
+    min-height: 64px;
+}
+
+/* ロゴ（h1） */
+.site-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.site-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* nav（右側） */
+.site-nav {
+    display: flex;
+    align-items: center;
+}
+
+/* 2本線のハンバーガー */
+.menu-btn {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-btn .bar {
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    height: 2px;
+    background: #111;
+}
+
+.menu-btn .bar:first-child {
+    top: 15px;
+}
+
+.menu-btn .bar:last-child {
+    top: 23px;
+}
+
+/* マスク（後でメニュー開いたら見せる） */
+.mask {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.is-open .mask {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* メニュー開状態（後で中身実装するときに使う） */
+.is-open .menu-btn .bar:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.is-open .menu-btn .bar:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
+
+/* main 部分 */
+#top {
+    padding-block: 40px;
+}
+
+/* ul グリッド */
+.product-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* PCは4列 */
+    gap: 24px;
+}
+
+/* li カード */
+.product-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fff;
+    text-align: center;
+}
+
+.product-card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.product-card .cap {
+    font-size: 14px;
+    margin: 0 0 4px;
+}
+
+.product-card .price {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+/* View More ボタン */
+.more {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.link-more {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid #111;
+    border-radius: 999px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* スマホ (900px以下) は2列 */
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
