@@ -1,0 +1,101 @@
+/* -----------------------------
+   item ページ専用スタイル
+   （レイアウトは教材通り）
+----------------------------- */
+
+/* 最大幅を 800px に制限 */
+.item-wrap {
+    max-width: 800px;
+    padding-block: 32px 48px;
+}
+
+/* タイトル（教材では h1） */
+.item-title {
+    margin: 0 0 24px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* 外枠：画像とテキストを横並び */
+.item-content {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* 左：画像エリア */
+.item-media {
+    flex: 1 1 50%;
+}
+
+.item-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* 右：本文エリア */
+.item-body {
+    flex: 1 1 50%;
+}
+
+.item-text {
+    margin: 0 0 16px;
+    line-height: 1.8;
+}
+
+.item-price {
+    margin: 0 0 20px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* スペック表 */
+.item-spec {
+    margin: 0 0 24px;
+}
+
+.item-spec>div {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 6px 12px;
+    margin-bottom: 6px;
+}
+
+.item-spec dt {
+    color: #666;
+    font-weight: 500;
+}
+
+.item-spec dd {
+    margin: 0;
+}
+
+/* 戻るリンク */
+.item-back {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.item-back a {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid #111;
+    border-radius: 999px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* スマホ（900px以下）は縦積み */
+@media (max-width: 900px) {
+    .item-content {
+        flex-direction: column;
+    }
+
+    .item-media,
+    .item-body {
+        flex: 1 1 100%;
+    }
+}

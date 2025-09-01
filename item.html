@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Item | Furniture Design</title>
+    <link rel="stylesheet" href="css/top.css" />
+    <link rel="stylesheet" href="css/item.css" />
+</head>
+
+<body>
+    <!-- 共通ヘッダー（簡略） -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <h1 class="site-title"><a href="index.html">Furniture Design</a></h1>
+            <nav class="site-nav">
+                <button class="menu-btn" aria-label="メニュー"><span class="bar"></span><span class="bar"></span></button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container item-wrap">
+            <!-- ページタイトル（教材のh1） -->
+            <h1 id="item-title" class="item-title">...</h1>
+
+            <!-- 外枠：Flex横並び（画像 / テキスト） -->
+            <div class="item-content">
+                <div class="item-media">
+                    <img id="item-img" src="" alt="">
+                </div>
+
+                <div class="item-body">
+                    <p id="item-text" class="item-text"></p>
+                    <p id="item-price" class="item-price"></p>
+
+                    <dl class="item-spec">
+                        <div>
+                            <dt>SIZE</dt>
+                            <dd id="item-size"></dd>
+                        </div>
+                        <div>
+                            <dt>COLOR</dt>
+                            <dd id="item-color"></dd>
+                        </div>
+                        <div>
+                            <dt>MATERIAL</dt>
+                            <dd id="item-material"></dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+
+            <p class="item-back"><a href="products.html">Back To Products</a></p>
+
+            <!-- Not Found 表示（id不正時） -->
+            <div id="not-found" style="display:none; text-align:center; margin:24px 0; color:#888;">
+                指定された商品は見つかりませんでした。
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <nav class="footer-sns">
+                <a href="#">INSTAGRAM</a><a href="#">TWITTER</a><a href="#">FACEBOOK</a>
+            </nav>
+            <small class="footer-copy">© Furniture Design</small>
+        </div>
+    </footer>
+
+    <!-- データとロジック -->
+    <script src="js/items.js"></script>
+    <script>
+        // URLの ?id= を取得
+        const params = new URL(location.href).searchParams;
+        const id = params.get('id');
+
+        // 要素参照
+        const el = {
+            title: document.getElementById('item-title'),
+            img: document.getElementById('item-img'),
+            text: document.getElementById('item-text'),
+            price: document.getElementById('item-price'),
+            size: document.getElementById('item-size'),
+            color: document.getElementById('item-color'),
+            material: document.getElementById('item-material'),
+            notFound: document.getElementById('not-found')
+        };
+
+        // データ差し込み
+        const data = id && window.ITEMS ? window.ITEMS[id] : null;
+
+        if (data) {
+            // タイトルと <title> も置き換え
+            el.title.textContent = data.title;
+            document.title = data.title + " | Furniture Design";
+
+            // 画像と本文
+            el.img.src = data.img;
+            el.img.alt = data.title;
+            el.text.textContent = data.text;
+            el.price.textContent = data.price;
+            el.size.textContent = data.size;
+            el.color.textContent = data.color;
+            el.material.textContent = data.material;
+        } else {
+            // 見つからない場合はメッセージ表示
+            el.notFound.style.display = "block";
+            // デフォルトの見栄え（空表示）でも崩れないように
+            el.title.textContent = "Item Not Found";
+            document.title = "Item Not Found | Furniture Design";
+        }
+    </script>
+</body>
+
+</html>
