@@ -15,21 +15,22 @@
     <header class="site-header">
         <div class="container header-inner">
             <h1 class="site-title"><a href="index.html">Furniture Design</a></h1>
-            <nav class="site-nav">
-                <button class="menu-btn" aria-label="メニュー">
+            <nav class="site-nav" aria-label="グローバルメニュー">
+                <button class="menu-btn" aria-label="メニュー" aria-expanded="false" aria-controls="global-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
-                <ul class="menu" hidden>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="company.html">Company</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="mailto:info@example.com">Contact</a></li>
+                <ul id="global-menu" class="menu" hidden>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="products.html">PRODUCTS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="company.html">COMPANY</a></li>
+                    <li><a href="mailto:info@example.com">CONTACT</a></li>
                 </ul>
-            </nav>
         </div>
     </header>
+    <!-- 背景マスク（index と同じもの） -->
+<div class="mask" aria-hidden="true"></div>
 
     <main>
         <div class="container">
@@ -118,5 +119,7 @@
     </footer>
 
 </body>
+
+<script src="js/nav.js"></script>
 
 </html>

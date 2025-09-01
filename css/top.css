@@ -143,3 +143,91 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* 初期は隠す（教材の「最初は非表示」） */
+#global-menu {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+}
+
+/* headerに.openが付いたら表示（教材の「openで表示」） */
+header.open #global-menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* スマホ時：メニューを右からスライドで出したい場合（任意。フェードのみなら不要） */
+@media (max-width: 900px) {
+    .site-nav .menu {
+        position: fixed;
+        top: 64px;
+        right: 0;
+        bottom: 0;
+        width: min(80vw, 320px);
+        background: #fff;
+        border-left: 1px solid #e5e7eb;
+        padding: 16px;
+        overflow: auto;
+
+        /* フェードだけで良ければ下2行は削除 */
+        transform: translateX(100%);
+        transition: transform .25s ease, opacity .25s ease;
+    }
+
+    header.open .site-nav .menu {
+        transform: translateX(0);
+    }
+
+    /* 背景マスク */
+    .mask {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease;
+    }
+
+    header.open~.mask {
+        /* headerがopenのときだけ効かせる */
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* ボタンを×にする（任意） */
+    .menu-btn {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border: 0;
+        background: transparent;
+    }
+
+    .menu-btn .bar {
+        position: absolute;
+        left: 9px;
+        right: 9px;
+        height: 2px;
+        background: #111;
+        transition: transform .2s ease, top .2s ease;
+    }
+
+    .menu-btn .bar:first-child {
+        top: 15px;
+    }
+
+    .menu-btn .bar:last-child {
+        top: 23px;
+    }
+
+    header.open .menu-btn .bar:first-child {
+        top: 19px;
+        transform: rotate(45deg);
+    }
+
+    header.open .menu-btn .bar:last-child {
+        top: 19px;
+        transform: rotate(-45deg);
+    }
+}
