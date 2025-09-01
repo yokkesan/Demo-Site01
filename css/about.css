@@ -1,0 +1,12 @@
+/* Aboutページ専用：最大幅600px、本文は段落で記述 */
+.about-wrap { max-width: 600px; padding-block: 32px 48px; }
+
+.about-title {
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.about-body { display: block; }
+.about-body p { margin: 0 0 16px; line-height: 1.9; }
+.about-body a { color: inherit; text-decoration: underline; }

@@ -1,0 +1,66 @@
+/* Company専用：最大幅600px、表組みはdlで2列、Mapはグレースケール */
+.company-wrap {
+    max-width: 600px;
+    padding-block: 32px 48px;
+}
+
+.company-title {
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* 情報ボックス */
+.company-box {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px 16px 8px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.company-dl {
+    margin: 0;
+}
+
+.company-dl>div {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 8px 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.company-dl>div:last-child {
+    border-bottom: 0;
+}
+
+.company-dl dt {
+    color: #666;
+    font-weight: 500;
+}
+
+.company-dl dd {
+    margin: 0;
+}
+
+/* Map埋め込み（グレースケール＋角丸） */
+.map-wrap {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.map-wrap iframe {
+    width: 100%;
+    height: 360px;
+    display: block;
+    filter: grayscale(100%);
+}
+
+/* 900px以下でも表示は同じ（幅はcontainerに依存） */
+@media (max-width: 900px) {
+    .company-wrap {
+        padding-block: 24px 40px;
+    }
+}
