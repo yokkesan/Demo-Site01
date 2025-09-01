@@ -1,6 +1,6 @@
 // js/items.js
 // 連想配列：キーは id（スラッグ推奨）
-const ITEMS = {
+window.ITEMS = {
     "chair-01": {
         title: "プロダクトタイトルA",
         img: "img/item1.jpg",
